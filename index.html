@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance</title>
+  <link rel="stylesheet" href="finance.css">
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  </script>
+
+</head>
+
+<body>
+  <div id="logo">
+    <img src="Screenshot (90).png">
+  </div>
+
+  <div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content">
+      <a class="a" id="clickHome">Home</a>
+      <a class="a" id="clickLog">log</a>
+      <a class="a" id="clickContact">Contact</a>
+    </div>
+  </div>
+  <div id="swift" style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776;</div>
+
+  <script>
+    function openNav() {
+      document.getElementById("myNav").style.width = "20%";
+      document.getElementById("swift").innerHTML = "&#x2600";
+    }
+
+    function closeNav() {
+      document.getElementById("myNav").style.width = "0%";
+      document.getElementById("swift").innerHTML = "&#x2630";
+    }
+  </script>
+
+  <main id="container">
+    <section id="Home">
+      <h1>Welcome</h1>
+      <div id="hook">
+        <p>LOG ALL YOU TRANSACTIONS AND PAYMENTS AND<br>
+          KEEP TRACK OF YOUR FINANCES HERE AT SWIFT BALANCE<br>
+          ENJOY<br>
+        </p>
+
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="money.jpg" alt="Avatar" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h2><a href="https://www.thebalance.com/top-ten-financial-tips-1289309" target="_blank">Finance Tips</a>
+            </h2>
+            <ol>1. Stick to a Budget</ol>
+            <ol>2. Pay Off Credit Card Debt </ol>
+            <ol>3. Contribute to a Retirement Plan</ol>
+            <ol>4. Have a Savings Plan</ol>
+            <ol>5. Maximize Your Employment Benefits</ol>
+            <ol>6. Review Your Insurance Coverages</ol>
+            <ol>7. Update Your Will</ol>
+          </div>
+        </div>
+      </div>
+
+      <div id=div-form>
+        <form id="form">
+          <h3>Find out your potential wage salary here</h3>
+          <fieldset id="fieldset">
+            <h4 id="h4-form">$$$$</h4>
+            <label>Enter Your Hours Per Week:</label><br>
+            <input type="text" id="hours" placeholder="40"><br>
+            <label>Choose Frequency:</label><br>
+            <select id="freq">
+              <option>annually</option>
+              <option>hourly</option>
+              <option>monthly</option>
+              <option>weekly</option>
+            </select><br>
+            <label>Low Wage:</label><br>
+            <input type="text" id="low" placeholder="16"><br>
+            <label>High Wage:</label><br>
+            <input type="text" id="high" placeholder="20"><br>
+            <input type="button" value="Submit" id="submit"> <br>
+
+          </fieldset>
+        </form>
+      </div>
+
+      <script>
+        document.querySelector("#submit").addEventListener("click", (e) => {
+          let hours = document.querySelector("#hours").value;
+          let freq = document.querySelector("#freq").value;
+          let low = document.querySelector("#low").value;
+          let high = document.querySelector("#high").value;
+          let url = "https://api.lrs.org/wage-calculator?" +
+            "hours=" + hours + "&low=" + low + "&high" + high + "&interval=" + freq;
+          console.log(url);
+          fetch(url).then(response => {
+              return response.json();
+            })
+            .then(json => {
+              console.log(json);
+              let h4 = document.querySelector("#h4-form");
+              let text = json["low_annually"];
+              h4.innerText = text;
+            });
+
+        })
+      </script>
+
+
+    </section>
+
+    <section id="log">
+      <h2 id="LOG">LOG</h2>
+      <div class="total-income">
+        <h4>Total Income($)</h4>
+        <input type="text" id="income" value="2000"><br>
+      </div>
+      <div id="move">
+
+        <div class="mdc-touch-target-wrapper">
+          <button class="mdc-fab mdc-fab--mini mdc-fab--touch push1">
+            <div class="mdc-fab__ripple"></div>
+            <span class="material-icons mdc-fab__icon">add</span>
+            <div class="mdc-fab__touch"></div>
+          </button>
+        </div>
+
+        <div class="hey">
+          <div class="mdc-touch-target-wrapper">
+            <button class="mdc-fab mdc-fab--mini mdc-fab--touch push2">
+              <div class="mdc-fab__ripple"></div>
+              <span class="material-icons mdc-fab__icon">add</span>
+              <div class="mdc-fab__touch"></div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <label class="tab">Choose Table:</label><br>
+      <select id="table-choose">
+        <option>Transaction</option>
+        <option>Deposit</option>
+      </select><br>
+
+
+
+      <label class="tab tab-two">Choose Row #:</label><br>
+      <select id="row-num">
+      </select><br>
+
+      <button type="click" id="update-button">Update</button>
+
+
+      <div id="TABLE-ONE-LABEL">Transaction</div>
+      <div id="TABLE-TWO-LABEL">Deposit</div>
+      <div class=container>
+        <table id="transaction">
+
+          <tr>
+            <th>Location & Date</th>
+            <th>$Withdrawal</th>
+            <th>Other Info</th>
+          </tr>
+
+          <tr id="row1">
+            <td> <input id="Location" type="text"><br></td>
+            <td> <input id="withdraw" type="text"><br></td>
+            <td> <input id="other" type="text"><br></td>
+          </tr>
+
+          <tr id="row2">
+            <td> <input id="Location" type="text"><br></td>
+            <td> <input id="withdraw" type="text"><br></td>
+            <td> <input id="other" type="text"><br></td>
+          </tr>
+
+          <tr id="row3">
+            <td> <input id="Location" type="text"><br></td>
+            <td> <input id="withdraw" type="text"><br></td>
+            <td> <input id="other" type="text"><br></td>
+          </tr>
+
+          <tr id="row4">
+            <td> <input id="Location" type="text"><br></td>
+            <td> <input id="withdraw" type="text"><br></td>
+            <td> <input id="other" type="text"><br></td>
+          </tr>
+
+          <tr id="row5">
+            <td> <input id="Location" type="text"><br></td>
+            <td> <input id="withdraw" type="text"><br></td>
+            <td> <input id="other" type="text"><br></td>
+          </tr>
+
+          <tr id="row6">
+            <td> <input id="Location" type="text"><br></td>
+            <td> <input id="withdraw" type="text"><br></td>
+            <td> <input id="other" type="text"><br></td>
+          </tr>
+        </table>
+
+        <table id="deposit">
+
+          <tr>
+            <th>Date</th>
+            <th>$Deposit</th>
+            <th>Other Info</th>
+          </tr>
+
+          <tr id="Drow1">
+            <td> <input id="Location" type="text"><br></td>
+            <td> <input id="depositt" type="text"><br></td>
+            <td> <input id="other" type="text"><br></td>
+          </tr>
+
+          <tr id="Drow2">
+            <td> <input id="Location" type="text"><br></td>
+            <td> <input id="depositt" type="text"><br></td>
+            <td> <input id="other" type="text"><br></td>
+          </tr>
+
+          <tr id="Drow3">
+            <td> <input id="Location" type="text"><br></td>
+            <td> <input id="depositt" type="text"><br></td>
+            <td> <input id="other" type="text"><br></td>
+          </tr>
+
+          <tr id="Drow4">
+            <td> <input id="Location" type="text"><br></td>
+            <td> <input id="depositt" type="text"><br></td>
+            <td> <input id="other" type="text"><br></td>
+          </tr>
+
+          <tr id="Drow5">
+            <td> <input id="Location" type="text"><br></td>
+            <td> <input id="depositt" type="text"><br></td>
+            <td> <input id="other" type="text"><br></td>
+          </tr>
+
+          <tr id="Drow6">
+            <td> <input id="Location" type="text"><br></td>
+            <td> <input id="depositt" type="text"><br></td>
+            <td> <input id="other" type="text"><br></td>
+          </tr>
+        </table>
+      </div>
+
+      <script>
+        let chose = document.querySelector("#table-choose").value;
+        let transaction = document.querySelectorAll("#withdraw");
+        let deposit = document.querySelectorAll("#depositt");
+        //Transaction Deposit
+        document.querySelector("#table-choose").onchange = function () {
+          let chose = document.querySelector("#table-choose").value;
+          let element = document.querySelectorAll("#opt");
+          let transaction = document.querySelectorAll("#withdraw");
+          let deposit = document.querySelectorAll("#depositt");
+          for (let i = 0; i < element.length; i++) {
+            element[i].remove();
+          }
+          if (chose == "Transaction") {
+            for (var i = 0; i < document.querySelectorAll("#withdraw").length; i++) {
+              let option = document.createElement("option");
+              option.id = "opt";
+              option.text = i + 1;
+              document.querySelector("#row-num").appendChild(option);
+            }
+
+          } else {
+            for (var i = 0; i < document.querySelectorAll("#depositt").length; i++) {
+              let option = document.createElement("option");
+              option.id = "opt";
+              option.text = i + 1;
+              document.querySelector("#row-num").appendChild(option);
+            }
+
+          }
+        }
+
+
+
+        document.querySelector(".push1").addEventListener("click", (e) => {
+          let p = document.querySelector("#row6");
+          let node = p.cloneNode(true);
+          document.querySelector("#transaction").appendChild(node);
+          //  let option = document.createElement("option");
+          //  option.text = document.querySelectorAll("#withdraw").length;
+          //   document.querySelector("#row-num").appendChild(option);
+
+          console.log(p.innerHTML);
+        });
+
+        document.querySelector(".push2").addEventListener("click", (e) => {
+          let p = document.querySelector("#Drow6");
+          let node = p.cloneNode(true);
+          document.querySelector("#deposit").appendChild(node);
+          //  let option = document.createElement("option");
+          //  option.text =  document.querySelectorAll("#depositt").length;
+          //  document.querySelector("#row-num").appendChild(option);
+
+          console.log(p.innerHTML);
+        });
+
+
+        document.querySelector("#update-button").addEventListener("click", (e) => {
+          let chose = document.querySelector("#table-choose").value;
+          console.log(chose);
+          let transaction = document.querySelectorAll("#withdraw");
+          let deposit = document.querySelectorAll("#depositt");
+          let val = document.querySelector("#row-num").value;
+
+          let total = document.querySelector("#income");
+          val = parseInt(val);
+
+          if (chose == "Transaction") {
+            let subtract = parseInt(transaction[val - 1].value);
+            total.value -= subtract;
+
+          } else if (chose == "Deposit") {
+            console.log("hey");
+            let add = parseInt(deposit[val - 1].value);
+            total.value += add;
+          }
+
+        });
+      </script>
+
+    </section>
+    <section id="contact">
+      <div class="card">
+        <h2>Contact Us</h2>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text">
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <label>Surname</label>
+              <input type="text">
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="text">
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="text">
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <label>Message/Concerns</label>
+              <textarea></textarea>
+            </div>
+          </div>
+
+          <div class="col">
+            <input id="submitE" type="submit" value="Submit">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="https://smtpjs.com/v3/smtp.js">
+  </script>S
+
+  <script>
+    document.querySelector("#clickHome").
+    addEventListener('click', (e) => {
+      let section = document.querySelectorAll("section");
+      for (let i = 0; i < section.length; i++) {
+        if (section[i].id == "Home") {
+          section[i].style.display = "block";
+        } else {
+          section[i].style.display = "none";
+        }
+      }
+    })
+
+    document.querySelector("#clickLog").
+    addEventListener('click', (e) => {
+      let section = document.querySelectorAll("section");
+      for (let i = 0; i < section.length; i++) {
+        if (section[i].id == "log") {
+          section[i].style.display = "block";
+        } else {
+          section[i].style.display = "none";
+        }
+      }
+    })
+
+    document.querySelector("#clickContact").
+    addEventListener('click', (e) => {
+      let section = document.querySelectorAll("section");
+      for (let i = 0; i < section.length; i++) {
+        if (section[i].id == "contact") {
+          section[i].style.display = "block";
+        } else {
+          section[i].style.display = "none";
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
