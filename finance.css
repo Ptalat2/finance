@@ -1,0 +1,480 @@
+body {
+  background-color: rgb(33,37,41);
+  opacity: 1;
+  height:750px;
+}
+
+
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+  
+  .overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+
+  
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .overlay a:hover, .overlay a:focus {
+    color: limegreen;
+  }
+  
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    }
+  }
+
+  #logo > img {
+    width: 75px;
+    height: 50px;
+  }
+
+  .flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+    float: right;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+ 
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border: 5px solid greenyellow;
+    border-radius: 10px;
+  }
+  
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  }
+  
+  .flip-card-back {
+    background-color: black;
+    color: rgb(9, 201, 205);
+    text-align: left;
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-back > h2 {
+    text-align: center;
+  }
+ 
+
+  #swift {
+      height: 25px;;
+    background-image: linear-gradient(rgb(230, 0, 255), rgb(221, 0, 255), rgba(146, 168, 209));
+    border: 5px solid black;
+    border-radius: 10px;
+    color:white;
+  }
+
+ 
+  #log {
+    display: none;
+  }
+
+  #contact {
+    display: none;
+  }
+
+  #Home  > h1 {
+    text-align: center;
+    color:greenyellow;
+    border: 1px solid aqua;
+    border-radius: 10px;
+    width:150px;
+    position: relative;
+    left:550px;
+  }
+  
+  #fieldset {
+    width: 300px;
+    height:250px;
+    background-color: black;
+    border: 2px solid greenyellow;
+  }
+
+  #fieldset > label {
+    color: antiquewhite;
+  }
+
+  #form {
+    width: 300px;
+    height: 300px;
+    
+  }
+
+  #form > h3 {
+    margin-left: 20px;
+    color:limegreen;
+  }
+
+  #fieldset > h4 {
+    color:limegreen;
+    text-align: right;
+    height:20px;
+    width:20px;
+
+  }
+
+  #submit {
+    background-color:silver;
+    margin-left: 50px;
+    margin-top: 10px;;
+  }
+  
+  #h4-form {
+   position: relative;
+   left:125px;
+  }
+
+  #hook >p {
+    text-align: center;
+    position: relative;
+    top: 170px; left: 290px;
+    color:aquamarine;
+    animation: change-color .5s alternate infinite;
+    width:700px;
+  }
+
+  #hook > p:hover {
+   font-weight: bold;
+   box-shadow: 0 8px 16px 0 rgba(219, 216, 216, 0.2);
+
+  }
+
+  @keyframes change-color {
+  0%   {color: aqua;}
+  50%  {color: limegreen;}
+  100%  {color: rgb(9, 201, 205);}
+  }
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 500px;
+  }
+  
+  td, th {
+    border: 1px solid limegreen;
+    text-align: left;
+    padding: 5px;
+  }
+
+  th {
+    color:antiquewhite;
+  }
+
+  
+  tr:nth-child(even) {
+    background-color: rgba(219, 216, 216, 0.2)
+  }
+
+  #depositt:nth-child(even) {
+    background-color: rgba(219, 216, 216, 0.2);
+  }
+
+#Location, #withdraw, #other , #depositt {
+    background-color:darkcyan;
+  }
+
+  .total-income{
+    position: relative;
+    left:1050px;
+    top:-30px;
+    width:500px;
+  }
+
+  .mdc-touch-target-wrapper > button {
+    background-image: linear-gradient(rgb(230, 0, 255), rgb(221, 0, 255), rgba(146, 168, 209));
+  }
+
+  .total-income > h4 {
+    background-color: rgb(187, 80, 210);
+    width:169px;
+    position: relative;
+    top:20px;
+    text-align: center;
+    color:antiquewhite;
+    left:1px; 
+  }
+
+  #LOG {
+    color:greenyellow;
+    text-align: center;
+    width:150px;
+    position: relative;
+    left:550px;
+    border-radius: 10px;
+    border: 1px solid aqua;
+  }
+
+  #income {
+    background-color: limegreen;
+    text-align:center;
+    border-radius: 10px;
+  }
+
+  #TABLE-ONE-LABEL{
+    background-color: darkcyan;
+    width:544px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    position: relative;
+    top:20px;
+  }
+
+
+ #transaction {
+   margin-right: 100px;
+ }
+  
+  #TABLE-TWO-LABEL{
+    background-color: darkcyan;
+    width:544px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    position: relative;
+    left: 644px;
+  }
+  .container {
+    display:flex;
+  }
+
+  #deposit {
+   margin-right: 50px;
+  } 
+
+  #move {
+    display:flex;
+ }
+
+ .hey {
+  margin-left: 1090px;
+ }
+
+
+
+#contact {
+  font-family: 'Balsamiq Sans', sans-serif;
+}
+
+.card {
+  width: 50%;
+  padding: 30px 90px 90px 90px;
+  border: 6px solid rgb(9, 201, 205);
+  box-shadow: 20px 20px 0 rgb(9, 201, 205);
+  border-radius: 50px;
+  position: relative;
+  left:250px;
+  animation: bounce 1.5s infinite;
+}
+
+.card h2 {
+  color: limegreen;
+  font-size: 60px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.card .row {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid: auto / auto auto;
+  grid-template-columns: repeat(auto-fit,minmax(40%, 1fr));
+  grid-gap: 30px;
+}
+
+.card .row .col {
+  position: relative;
+  width: 100%;
+  margin: 30px 20px 40px 0;
+  transition: 0.5s;
+}
+
+.card .row .form-group {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  color: #ffffff;
+}
+
+.card .row .form-group input,
+.card .row .form-group textarea {
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  background: transparent;
+  outline: none;
+  font-size: 24px;
+  padding: 10px 0 10px 20px;
+  border: 5px solid rgb(9, 201, 205);
+  box-shadow: 10px 10px 0 rgb(9, 201, 205);
+  color: #ffffff;
+  border-radius: 50px;
+}
+
+.card .row .form-group label {
+  line-height: 40px;
+  color: limegreen;
+  font-size: 24px;
+  margin: 0 0 0 30px;
+  display: block;
+  pointer-events: none;
+}
+
+.row .col:nth-child(6) {
+  margin-top: 64px;
+}
+
+.card .row .form-group input:focus,
+.card .row .form-group textarea:focus {
+  border: 5px solid #ffffff;
+  transition: all 0.5s;
+}
+
+.card .row input[type="submit"] {
+  border: 5px solid rgb(9, 201, 205);
+  box-shadow: 10px 10px 0 rgb(9, 201, 205);
+  padding: 10px;
+  height: 100%;
+  width: 50%;
+  cursor: pointer;
+  outline: none;
+  background: transparent;
+  text-transform: uppercase;
+  color: limegreen;;
+  line-height: 40px;
+  font-size: 24px;
+  font-weight: 700;
+  border-radius: 45px;
+  transition: all 0.4s;
+}
+
+.card .row input[type="submit"]:hover {
+  border: 5px solid rgba(255, 255, 255, 1);
+  color: #ffffff;
+  transition: all 0.4s;
+}
+
+#table-choose , #row-num {
+  background-color: rgba(245, 174, 80, 0.833);
+  color:black;
+  position: relative;
+  left:490px;
+}
+
+.tab {
+  position: relative;
+  color:aquamarine;
+  left:490px;
+}
+
+.tab-two {
+  position: relative;
+  left:600px;
+  top:-35.5px;
+}
+
+#row-num {
+  position: relative;
+  left:600px;
+  top:-36px;
+}
+
+#update-button{
+  position: relative;
+  left:710px;
+  top:-55px;
+  height: 18px;
+  background-color: rgba(245, 174, 80, 0.833);
+  border: 1px, white;
+  border-radius: 25%;
+
+}
+
+@media screen and (max-width: 900px) {
+  .card .row {
+    grid-template-columns: repeat(auto-fit,minmax(70%, 1fr));
+  }
+  
+  .card {
+    padding: 20px;
+  }
+  
+  .card h2 {
+    font-size: 34px;
+  }
+  
+  .card .row input[type="submit"] {
+    width: 100%;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate(0, 4px);
+  }
+  50% {
+    transform: translate(0, 8px);
+  }
+} 
